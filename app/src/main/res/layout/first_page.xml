@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -29,11 +29,8 @@
         android:textColor="#FFFFFF"
         android:textScaleX="1.1"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        android:layout_marginTop="100dp"
+         />
 
     <View
         android:id="@+id/signup_box"
@@ -42,14 +39,13 @@
         android:layout_marginBottom="48dp"
         android:background="@drawable/signup_box"
         android:backgroundTint="#CCCDCED2"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="540dp"
+        android:layout_marginLeft="45dp"
+         />
 
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/login_button"
         android:layout_width="120dp"
         android:layout_height="100px"
         android:background="@drawable/button_background"
@@ -59,27 +55,21 @@
         android:text="LOGIN"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+        android:layout_marginTop="560dp"
+        android:layout_marginLeft="80dp"
+         />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/signup_button"
         android:layout_width="120dp"
         android:layout_height="100px"
         android:background="@drawable/button_background"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/amiko"
         android:text="SIGN UP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.816" />
+        android:layout_marginTop="560dp"
+        android:layout_marginLeft="210dp"
+         />
 
 
     <ImageView
@@ -87,13 +77,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:translationZ="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891"
-        app:srcCompat="@drawable/googleicon" />
+        app:srcCompat="@drawable/googleicon"
+        android:layout_marginTop="615dp"
+        android:layout_marginLeft="78dp"/>
 
     <Button
         android:id="@+id/button4"
@@ -103,13 +89,10 @@
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/amiko"
         android:text="Sign In with Google+"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.896" />
+        android:layout_marginTop="610dp"
+        android:layout_marginLeft="70dp"
+         />
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
