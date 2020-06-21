@@ -15,8 +15,6 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-
 public class MainActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN =1 ;
     private static final String TAG ="Google Sign In" ;
@@ -79,12 +77,13 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
+            Log.w(TAG, "signInResult:success");
             updateUI(account);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-            updateUI(null);
+            //updateUI(null);
         }
     }
 }
