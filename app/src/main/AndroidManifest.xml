@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Homepage"></activity>
+        <activity android:name=".FirstPageActivity"></activity>
+        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".LoginActivity"
+            android:noHistory = "true"></activity>
+        <activity android:name=".HomepageActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -30,7 +30,6 @@
         android:inputType="textPersonName"
         android:text="WHYRE APP"
         android:textAlignment="center"
-        android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
         android:textScaleX="1.1"
