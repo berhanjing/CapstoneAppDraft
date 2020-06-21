@@ -22,7 +22,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,7 +49,7 @@ public class FirstPageActivity extends AppCompatActivity {
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken("817991572659-l3g1m2tjqrr68copi66obfrr2k4p33r2.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
@@ -66,8 +65,8 @@ public class FirstPageActivity extends AppCompatActivity {
         super.onStart();
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser!=null)
-            updateUI(currentUser);
+//        if(currentUser!=null)
+//            updateUI(currentUser);
         Button signupbtn = findViewById(R.id.signup_button);
         Button loginbtn = findViewById(R.id.login_button);
         signupbtn.setOnClickListener(new View.OnClickListener() {
@@ -93,13 +92,6 @@ public class FirstPageActivity extends AppCompatActivity {
     }
     private void googleSignIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-//        mGoogleSignInClient.signOut()
-//                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        // ...
-//                    }
-//                });
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
     private void updateUI(FirebaseUser account) {
@@ -126,8 +118,8 @@ public class FirstPageActivity extends AppCompatActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                //Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
-                //firebaseAuthWithGoogle(account.getIdToken());
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
+                firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);

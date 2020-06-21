@@ -30,16 +30,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i = null;
-                if(FirebaseAuth.getInstance().getCurrentUser()!= null) {
-                    Intent intent = new Intent(MainActivity.this, HomepageActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else{
+//                if(FirebaseAuth.getInstance().getCurrentUser()!= null) {
+//                    Intent intent = new Intent(MainActivity.this, HomepageActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                else{
                     i = new Intent(MainActivity.this, FirstPageActivity.class);
                     startActivity(i);
                     finish();
-                }
+//                }
             }
         }, TIME_OUT);
     }
