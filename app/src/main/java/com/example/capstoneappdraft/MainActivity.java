@@ -3,10 +3,18 @@ package com.example.capstoneappdraft;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.os.Handler;
 import android.content.Intent;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,20 +29,17 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i;
-                //if(FirebaseAuth.getInstance().getCurrentUser()== null) {
-                    //            Intent intent = new Intent(this, FirstPageActivity.class);
-                    //            startActivity(intent);
-                    //            finish();
-                    //        }
-                    //i = new Intent(MainActivity.this, HomepageActivity.class);
-                //}
-                //else{
+                Intent i = null;
+                if(FirebaseAuth.getInstance().getCurrentUser()!= null) {
+                    Intent intent = new Intent(MainActivity.this, HomepageActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
                     i = new Intent(MainActivity.this, FirstPageActivity.class);
-                //}
-
-                startActivity(i);
-                finish();
+                    startActivity(i);
+                    finish();
+                }
             }
         }, TIME_OUT);
     }

@@ -81,7 +81,7 @@
         android:layout_marginTop="615dp"
         android:layout_marginLeft="78dp"/>
 
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/button4"
         android:layout_width="270dp"
         android:layout_height="100px"
