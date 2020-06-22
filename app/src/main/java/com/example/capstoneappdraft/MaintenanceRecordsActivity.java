@@ -1,4 +1,14 @@
 package com.example.capstoneappdraft;
 
-public class MaintenanceRecordsActivity {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MaintenanceRecordsActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.maintenancerecords);
+
+    }
 }

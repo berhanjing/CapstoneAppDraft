@@ -1,5 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <View
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="#B5C5C4"
+        />
+
+    <EditText
+        android:id="@+id/whyre_appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/amiko"
+        android:text="MAINTENANCE RECORDS"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
+        android:textScaleX="1.1"
+        android:textSize="20sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="60dp"
+        />
+
+    <EditText
+        android:id="@+id/maintenance_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/raleway_medium"
+        android:text="Create New Maintenance Record"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
+        android:textScaleX="1.1"
+        android:textSize="20sp"
+        android:layout_marginLeft="70dp"/>
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Title:"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="220dp"/>
+
+    <EditText
+        android:id="@+id/title_input"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:fontFamily="@font/amiko"
+        android:gravity="center"
+        android:inputType="text"
+        android:textAllCaps="true"
+        android:background="@drawable/field_box"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="215dp" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="Date:"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="290dp"/>
+
+
+    <EditText
+        android:id="@+id/date_field"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:fontFamily="@font/amiko"
+        android:gravity="center"
+        android:inputType="date"
+        android:textAllCaps="true"
+        android:background="@drawable/field_box"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="280dp" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="Time:"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="360dp"/>
+
+
+
+    <EditText
+        android:id="@+id/time_field"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:fontFamily="@font/amiko"
+        android:gravity="center"
+        android:inputType="time"
+        android:textAllCaps="true"
+        android:background="@drawable/field_box"
+        android:text=""
+        android:textColor="#000000"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="350dp" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="Description:"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="430dp"/>
+
+    <EditText
+        android:id="@+id/description_input"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:paddingTop="15dp"
+        android:ems="10"
+        android:fontFamily="@font/amiko"
+        android:gravity="center"
+        android:inputType="text"
+        android:background="@drawable/field_box"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="480dp" />
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_menu"
+        />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="100dp"
+        android:layout_height="120px"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#6BAFEE"
+        android:cursorVisible="true"
+        android:fontFamily="@font/asap"
+        android:text="SUBMIT"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="730dp" />
+
+
+
 
 </RelativeLayout>
