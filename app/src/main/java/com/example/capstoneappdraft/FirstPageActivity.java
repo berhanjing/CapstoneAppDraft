@@ -50,7 +50,7 @@ public class FirstPageActivity extends AppCompatActivity {
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("817991572659-l3g1m2tjqrr68copi66obfrr2k4p33r2.apps.googleusercontent.com")
-                .requestEmail()
+                .requestId()
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -140,6 +140,7 @@ public class FirstPageActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            //Log.i("FirstPage",user.getPhoneNumber());
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
