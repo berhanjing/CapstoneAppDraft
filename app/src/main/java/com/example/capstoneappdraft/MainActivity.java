@@ -26,6 +26,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+public class MainActivity extends AppCompatActivity {
     private static int TIME_OUT = 3000; //Time to launch the another activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {

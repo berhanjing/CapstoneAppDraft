@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -107,6 +108,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
                     // if sign-in is successful
                     // intent to home activity
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    //Log.i("FirstPage",user.getPhoneNumber());
+                    if(user.getDisplayName()!=null)
+                        Log.i("Login",user.getDisplayName());
+                    else
+                        Log.i("Login","cannot");
                     Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                     startActivity(intent);
                 }
