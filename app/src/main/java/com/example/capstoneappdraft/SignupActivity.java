@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,8 +32,7 @@ public class SignupActivity extends AppCompatActivity {
     Button signupButton;
     String emailText;
     String passwordText;
-
-
+    FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +48,7 @@ public class SignupActivity extends AppCompatActivity {
         // ...
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
+        db = FirebaseFirestore.getInstance();
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
