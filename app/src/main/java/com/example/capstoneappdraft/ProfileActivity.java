@@ -9,41 +9,36 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
-public class HomepageActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homepage);
-
+        setContentView(R.layout.profile_page);
         bottomNavigationView = findViewById(R.id.navigator);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.navigation_maintenance:
-                        startActivity(new Intent(HomepageActivity.this, MaintenanceRecordsActivity.class));
+                        startActivity(new Intent(ProfileActivity.this, MaintenanceRecordsActivity.class));
+                        overridePendingTransition(0,0);
+                    case R.id.navigation_home:
+                        startActivity(new Intent(ProfileActivity.this, HomepageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.navigation_home:
-                        return true;
                     case R.id.navigation_scoreboard:
-                        startActivity(new Intent(HomepageActivity.this, ScoreboardActivity.class));
+                        startActivity(new Intent(ProfileActivity.this, ScoreboardActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_profile:
-                        startActivity(new Intent(HomepageActivity.this, ProfileActivity.class));
-                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
             }
         });
-
     }
-
 }
