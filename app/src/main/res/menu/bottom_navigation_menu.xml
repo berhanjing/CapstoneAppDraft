@@ -2,25 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/home_icon"
+        android:icon="@drawable/home"
         android:title="Home"
         android:enabled="true"/>
 
     <item
         android:id="@+id/navigation_maintenance"
-        android:icon="@drawable/tools"
+        android:icon="@drawable/tool"
         android:title="Maintenance"
         android:enabled="true"/>
 
     <item
         android:id="@+id/navigation_scoreboard"
-        android:icon="@drawable/scoreboard"
+        android:icon="@drawable/ic_outline_score_24"
         android:title="Scoreboard"
         android:enabled="true"/>
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/profile_pic"
+        android:icon="@drawable/ic_outline_account_circle_24"
         android:title="Profile"
         android:enabled="true"/>
 

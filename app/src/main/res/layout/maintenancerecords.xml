@@ -27,6 +27,11 @@
         android:layout_marginTop="30dp"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     <EditText
         android:id="@+id/maintenance_heading"
         android:layout_width="350dp"
@@ -43,11 +48,9 @@
         android:textColor="#000000"
         android:textScaleX="1.1"
         android:textSize="20sp" />
+</LinearLayout>
 
-    <View
-        android:id="@+id/maintenance_record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -59,24 +62,17 @@
         android:layout_marginBottom="100dp"
         android:background="@drawable/floating_action_button"
         android:backgroundTint="#6BAFEE"
-        android:clickable="true" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="120dp"
-        app:srcCompat="@drawable/plus" />
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_add_24"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigator"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-        app:menu="@menu/navigation_bar" />
-
+        app:itemIconSize="25dp"
+        app:menu="@menu/bottom_navigation_menu" />
 
 </RelativeLayout>

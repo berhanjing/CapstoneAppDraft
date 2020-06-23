@@ -29,7 +29,7 @@
         android:textSize="30sp"
         android:layout_marginTop="30dp"
          />
-    
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigator"
@@ -37,7 +37,9 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-        app:menu="@menu/navigation_bar" />
+        app:itemIconSize="25dp"
+        app:menu="@menu/bottom_navigation_menu"
+        />
 
 
 </RelativeLayout>
