@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".GoogleProfileActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,15 +17,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FirstPageActivity"></activity>
-        <activity android:name=".SignupActivity"></activity>
-        <activity android:name=".LoginActivity"
-            android:noHistory = "true"></activity>
-        <activity android:name=".HomepageActivity"></activity>
-        <activity android:name=".MaintenanceRecordsActivity"></activity>
-        <activity android:name=".ScoreboardActivity"></activity>
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".CreateMaintenanceRecordActivity"></activity>
+        <activity android:name=".FirstPageActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".LeaderBoardActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:noHistory="true" />
+        <activity android:name=".HomepageActivity" />
+        <activity android:name=".MaintenanceRecordsActivity" />
+        <activity android:name=".ScoreboardActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".CreateMaintenanceRecordActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

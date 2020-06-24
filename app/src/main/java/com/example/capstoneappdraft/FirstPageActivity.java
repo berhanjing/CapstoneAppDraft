@@ -22,6 +22,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,7 +36,7 @@ public class FirstPageActivity extends AppCompatActivity {
     SignInButton mSignInButton;
     // [START declare_auth]
     private FirebaseAuth mAuth;
-
+    FirebaseFirestore db;
     // [END declare_auth]
 
     @Override
@@ -53,6 +57,7 @@ public class FirstPageActivity extends AppCompatActivity {
                 .requestId()
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
+        db = FirebaseFirestore.getInstance();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         // Initialize Firebase Auth
@@ -94,15 +99,38 @@ public class FirstPageActivity extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-    private void updateUI(FirebaseUser account) {
+    private void updateUI(final FirebaseUser account) {
         if(account==null){
             // sign-in failed
             Log.i("FirstPage","UpdateUI");
             Toast.makeText(getApplicationContext(), "Login failed!", Toast.LENGTH_LONG).show();
             return;
         }
-        Intent i = new Intent(FirstPageActivity.this,HomepageActivity.class);
-        startActivity(i);
+        db.collection("users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(document.getId().equals(account.getUid())) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    Intent i = new Intent(FirstPageActivity.this,LeaderBoardActivity.class);
+                                    startActivity(i);
+                                    return;
+                                }
+                            }
+                            Intent i = new Intent(FirstPageActivity.this, GoogleProfileActivity.class);
+                            startActivity(i);
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                            return;
+                        }
+                    }
+                });
+
+
+        return;
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

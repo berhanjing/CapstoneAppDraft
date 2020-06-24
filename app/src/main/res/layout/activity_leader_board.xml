@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent">
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="#B5C5C4" />
+
+    <Button
+        android:id="@+id/score_board_button"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_default_leader_board"
+        android:cursorVisible="true"
+        android:fontFamily="@font/asap"
+        android:text="Scoreboard"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/leader_board_button"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:cursorVisible="true"
+        android:fontFamily="@font/asap"
+        android:text="leaderBoard"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#6BAFEE"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:footerDividersEnabled="true"></ListView>
+
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/navigator"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_alignParentBottom="true"
+    android:background="#FFFFFF"
+    app:itemIconSize="25dp"
+    app:menu="@menu/bottom_navigation_menu"
+    />
+
+</RelativeLayout>
