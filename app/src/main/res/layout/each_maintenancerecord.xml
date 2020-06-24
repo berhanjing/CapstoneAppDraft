@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/border_bottom"
+    android:id="@+id/one_record">
     <LinearLayout
-        android:id="@+id/one_record"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="20dp"
-        android:background="@drawable/border_bottom">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        android:orientation="horizontal">
         <TextView
-            android:id="@+id/date_field"
+            android:id="@+id/date_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -24,61 +19,58 @@
             android:textColor="#6B727D"
             android:textSize="25dp" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
+            <CheckBox
+                android:id="@+id/checkboxButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
                 android:layout_marginTop="17dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                />
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    </LinearLayout>
         <TextView
             android:id="@+id/time_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="55dp"
             android:fontFamily="@font/asap"
             android:text="3:15 PM"
             android:textColor="#6B727D"
             android:textSize="25dp" />
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/expand_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/next_arrow"
             android:background="@color/fui_transparent"
-            android:layout_marginLeft="230dp"
-            android:layout_marginTop="5dp"/>
-        </LinearLayout>
+            android:layout_marginLeft="330dp"
+            android:layout_marginTop="50dp"/>
+
         <TextView
             android:id="@+id/title_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="87dp"
             android:fontFamily="@font/asap"
             android:text="Check Battery Life and Tire Pressure"
             android:textColor="#6B727D"
             android:textSize="18dp" />
+
         <TextView
             android:id="@+id/duedate_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="112dp"
             android:fontFamily="@font/asap"
             android:text="Due in 10 Days' Time"
             android:textColor="#999999"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:layout_marginBottom="10dp"/>
 
-
-    </LinearLayout>
 
 
 </RelativeLayout>

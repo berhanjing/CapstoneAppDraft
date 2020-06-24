@@ -23,11 +23,12 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
-                    case R.id.navigation_maintenance:
-                        startActivity(new Intent(ProfileActivity.this, MaintenanceRecordsActivity.class));
-                        overridePendingTransition(0,0);
                     case R.id.navigation_home:
                         startActivity(new Intent(ProfileActivity.this, HomepageActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_maintenance:
+                        startActivity(new Intent(ProfileActivity.this, MaintenanceRecordsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_scoreboard:

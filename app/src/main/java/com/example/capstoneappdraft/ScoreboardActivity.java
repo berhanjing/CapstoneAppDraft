@@ -16,17 +16,18 @@ public class ScoreboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scoreboard_page);
         bottomNavigationView = findViewById(R.id.navigator);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_scoreboard);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
-                    case R.id.navigation_maintenance:
-                        startActivity(new Intent(ScoreboardActivity.this, MaintenanceRecordsActivity.class));
-                        overridePendingTransition(0,0);
                     case R.id.navigation_home:
                         startActivity(new Intent(ScoreboardActivity.this, HomepageActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_maintenance:
+                        startActivity(new Intent(ScoreboardActivity.this, MaintenanceRecordsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_scoreboard:
