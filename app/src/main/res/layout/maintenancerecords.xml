@@ -17,40 +17,28 @@
         android:background="@android:color/transparent"
         android:ems="10"
         android:fontFamily="@font/amiko"
-        android:text="WHYRE APP"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#000000"
-        android:textScaleX="1.1"
-        android:textSize="30sp"
-        android:layout_marginTop="30dp"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/maintenance_heading"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:layout_marginRight="60dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:fontFamily="@font/amiko"
         android:text="MAINTENANCE RECORDS"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#000000"
         android:textScaleX="1.1"
-        android:textSize="20sp" />
+        android:textSize="25sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        />
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="92dp"
+    android:id="@+id/record_box">
+
+
 </LinearLayout>
-
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
