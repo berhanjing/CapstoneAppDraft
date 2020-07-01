@@ -49,37 +49,24 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkDataEntered();
-                LoginToAccount();
+                if (checkDataEntered()) {
+                    LoginToAccount();
+                }
             }
         });
     }
 
-    void checkDataEntered() {
+    boolean checkDataEntered() {
         if (isEmpty(emailInput) || isEmpty(passwdInput) || (isEmpty(emailInput) && isEmpty(passwdInput))) {
             Toast t = Toast.makeText(this, "You must enter relevant fields!", Toast.LENGTH_SHORT);
             t.show();
+            return false;
         }
+        return true;
     }
-//            var email: String = emailEt.text.toString()
-//            var password: String = passwordEt.text.toString()
-//
-//            if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-//                Toast.makeText(this@LoginActivity, "Please fill all the fields", Toast.LENGTH_LONG).show()
-//            } else{
-//                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
-//                    if(task.isSuccessful) {
-//                        Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
-//                        val intent = Intent(this, MainActivity::class.java)
-//                        startActivity(intent)
-//                        finish()
-//                    }else {
-//                        Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
-//                    }
-//                })
-//            }
-//        }
 
-    boolean isEmpty (EditText text) {
+
+    boolean isEmpty(EditText text) {
 //        String str = text.getText().toString();
 //        return (str. equals(""));
         CharSequence str = text.getText().toString();
@@ -102,8 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                     // intent to home activity
                     Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                     startActivity(intent);
-                }
-                else {
+                } else {
                     // sign-in failed
                     Toast.makeText(getApplicationContext(), "Login failed!", Toast.LENGTH_LONG).show();
                 }
@@ -111,11 +97,5 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        // super.onBackPressed();
-//        Toast.makeText(LoginActivity.this,"There is no back action",Toast.LENGTH_LONG).show();
-//        return;
-//    }
 }
 

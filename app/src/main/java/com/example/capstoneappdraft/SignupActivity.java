@@ -55,7 +55,12 @@ public class SignupActivity extends AppCompatActivity {
                 emailText = email.getText().toString();
                 passwordText = password.getText().toString();
                 checkDataEntered();
-                createAccount(emailText, passwordText);
+                if (checkDataEntered()) {
+                    createAccount(emailText, passwordText);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "You did not fill in form correctly!", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -81,9 +86,10 @@ public class SignupActivity extends AppCompatActivity {
     }
 
 
-    void checkDataEntered() {
+    boolean checkDataEntered() {
         String passwordText = password.getText().toString();
         String confirmPasswordText = confirmPassword.getText().toString();
+
         if (isEmpty(firstName)) {
             Toast t = Toast.makeText(this, "You must enter first name to register!", Toast.LENGTH_SHORT);
             t.show();
@@ -94,17 +100,16 @@ public class SignupActivity extends AppCompatActivity {
         if (isEmpty(password)) {
             password.setError("Password is required!");
         }
-        if (password.length() < 6 && password.length() > 0){
-            password.setError("Password must be more than 6 characters!");
-        }
         if (isEmpty(confirmPassword)) {
             confirmPassword.setError("Confirm Your Password!");
         }
-//        if(confirmPasswordText != passwordText){
-//            Log.d(TAG, "confirm password:" + confirmPasswordText + "and password:" + password);
-//            confirmPassword.setError("Passwords do not match!");
-//        }
-
+        else if (password.length() < 6 && password.length() > 0){
+            password.setError("Password must be more than 6 characters!");
+        }
+        if(isEmpty(firstName) ||isEmail(email) == false||isEmpty(password)||isEmpty(confirmPassword)||password.length() < 6 && password.length() > 0){
+            return false;
+        }
+        return true;
     }
 
     boolean isEmpty (EditText text) {

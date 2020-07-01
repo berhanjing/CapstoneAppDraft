@@ -25,6 +25,9 @@
         <activity android:name=".ScoreboardActivity"></activity>
         <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".CreateMaintenanceRecordActivity"></activity>
+        <activity android:name=".CalendarActivity"></activity>
+        <activity android:name=".TimePickerActivity"></activity>
+        <activity android:name=".RecordDetailActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

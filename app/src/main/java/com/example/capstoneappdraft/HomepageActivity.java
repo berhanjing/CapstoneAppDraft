@@ -3,6 +3,8 @@ package com.example.capstoneappdraft;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,6 +22,10 @@ public class HomepageActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.navigator);
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+
+        LinearLayout onePastTrip = findViewById(R.id.pasttrip_content);
+        View view = getLayoutInflater().inflate(R.layout.past_trip, onePastTrip,false);
+        onePastTrip.addView(view);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

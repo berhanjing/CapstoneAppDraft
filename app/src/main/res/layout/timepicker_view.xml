@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TimePicker android:id="@+id/timePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        android:layout_marginLeft="60dp"/>
+
+    <Button
+        android:id="@+id/time_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#6BAFEE"
+        android:fontFamily="@font/amiko"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Set Time"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="110dp"
+        android:textSize="20sp" />
+</RelativeLayout>
