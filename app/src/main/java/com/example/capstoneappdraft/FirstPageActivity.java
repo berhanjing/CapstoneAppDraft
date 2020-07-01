@@ -184,7 +184,6 @@ public class FirstPageActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }
 
 
