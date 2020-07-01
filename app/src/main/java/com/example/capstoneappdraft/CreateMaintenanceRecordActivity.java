@@ -1,5 +1,6 @@
 package com.example.capstoneappdraft;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,6 +9,7 @@ import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -43,6 +46,13 @@ public class CreateMaintenanceRecordActivity extends AppCompatActivity {
     private static final String DATE_KEY = "Date";
     private static final String TIME_KEY = "Time";
     private static final String DESC_KEY = "Description";
+    private static final String TIME_STAMP = "Time Stamp";
+
+    int LAUNCH_CALENDAR_ACTIVITY = 1;
+    int LAUNCH_TIMEPICKER_ACTIVITY = 2;
+
+    String date;
+    String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,31 +64,30 @@ public class CreateMaintenanceRecordActivity extends AppCompatActivity {
         timeInput = findViewById(R.id.time_field);
         descriptionInput = findViewById(R.id.description_input);
 
-//        bottomNavigationView = findViewById(R.id.navigator);
-//        bottomNavigationView.setSelectedItemId(R.id.navigation_maintenance);
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                switch(menuItem.getItemId()){
-//                    case R.id.navigation_maintenance:
-//                        return true;
-//                    case R.id.navigation_home:
-//                        startActivity(new Intent(CreateMaintenanceRecordActivity.this, HomepageActivity.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    case R.id.navigation_scoreboard:
-//                        startActivity(new Intent(CreateMaintenanceRecordActivity.this, ScoreboardActivity.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    case R.id.navigation_profile:
-//                        startActivity(new Intent(CreateMaintenanceRecordActivity.this, ProfileActivity.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
+        //set clickable but not editable (for date input)
+        dateInput.setFocusable(false);
+        dateInput.setClickable(true);
+        dateInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateMaintenanceRecordActivity.this, CalendarActivity.class);
+                startActivityForResult(intent, LAUNCH_CALENDAR_ACTIVITY);
+            }
+        });
+
+
+        //set clickable but not editable (for time input)
+        timeInput.setFocusable(false);
+        timeInput.setClickable(true);
+        timeInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateMaintenanceRecordActivity.this, TimePickerActivity.class);
+                startActivityForResult(intent, LAUNCH_TIMEPICKER_ACTIVITY);
+            }
+        });
+
+
 
 
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -90,10 +99,12 @@ public class CreateMaintenanceRecordActivity extends AppCompatActivity {
                 String descriptionString = descriptionInput.getText().toString();
 
                 checkDataEntered();
+                if (checkDataEntered()){
                 writeNewRecord(titleString, dateString, timeString, descriptionString);
                 Intent intent = new Intent(CreateMaintenanceRecordActivity.this, MaintenanceRecordsActivity.class);
                 startActivity(intent);
                 finish();
+                }
             }
         });
 
@@ -102,20 +113,24 @@ public class CreateMaintenanceRecordActivity extends AppCompatActivity {
 
     }
 
-    void checkDataEntered() {
+    boolean checkDataEntered() {
 
         if (isEmpty(titleInput)) {
             Toast t = Toast.makeText(this, "You must enter title!", Toast.LENGTH_SHORT);
             t.show();
         }
 
-        if (isEmpty(dateInput)) {
-            dateInput.setError("Set date!");
-        }
         if (isEmpty(timeInput)) {
             timeInput.setError("Set a time!");
         }
 
+        if (isEmpty(dateInput)) {
+            dateInput.setError("Set a date!");
+        }
+        if(isEmpty(titleInput)||isEmpty(timeInput)||isEmpty(dateInput)){
+            return false;
+        }
+        return true;
     }
 
     boolean isEmpty (EditText text) {
@@ -124,6 +139,7 @@ public class CreateMaintenanceRecordActivity extends AppCompatActivity {
     }
 
     private void writeNewRecord(String title, String date, String time, String description){
+
         FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
 
         Map < String, Object > newRecord = new HashMap < > ();
@@ -131,6 +147,7 @@ public class CreateMaintenanceRecordActivity extends AppCompatActivity {
         newRecord.put(DATE_KEY, date);
         newRecord.put(TIME_KEY, time);
         newRecord.put(DESC_KEY,description);
+        newRecord.put(TIME_STAMP, FieldValue.serverTimestamp());
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userID = user.getUid();
 
@@ -152,5 +169,21 @@ public class CreateMaintenanceRecordActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == LAUNCH_CALENDAR_ACTIVITY) {
+            if(resultCode == Activity.RESULT_OK){
+                date = data.getStringExtra("dateFromCalendar");
+                dateInput.setText(date);
+            }
+        }
+        if(requestCode == LAUNCH_TIMEPICKER_ACTIVITY){
+            if(resultCode == Activity.RESULT_OK){
+                time = data.getStringExtra("setTime");
+                timeInput.setText(time);
+            }
+        }
+    }
 }
