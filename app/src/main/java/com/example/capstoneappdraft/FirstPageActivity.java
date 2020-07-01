@@ -1,11 +1,14 @@
 package com.example.capstoneappdraft;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -49,7 +52,7 @@ public class FirstPageActivity extends AppCompatActivity {
 //            startActivity(intent);
 //            finish();
 //        }
-        mSignInButton= findViewById(R.id.button4);
+        mSignInButton = findViewById(R.id.googleButton);
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -180,6 +183,33 @@ public class FirstPageActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+
+    private void googleButtonUI() {
+
+        SignInButton googleButton = (SignInButton) findViewById(R.id.googleButton);
+        googleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        for (int i = 0; i < googleButton.getChildCount(); i++) {
+            View v = googleButton.getChildAt(i);
+
+            if (v instanceof TextView)
+            {
+                TextView tv = (TextView) v;
+                tv.setTypeface(null, Typeface.NORMAL);
+                tv.setText("My Text");
+                tv.setTextColor(Color.parseColor("#50555C"));
+                tv.setSingleLine(true);
+                tv.setPadding(15, 15, 15, 15);
+
+                return;
+            }
+        }
     }
 }
 
