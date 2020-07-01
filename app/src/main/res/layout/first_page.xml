@@ -85,15 +85,12 @@
         android:id="@+id/googleButton"
         android:layout_width="260dp"
         android:layout_height="140px"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="605dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/amiko"
         android:text="Sign In with Google+"
-        android:layout_marginTop="605dp"
-        android:layout_marginLeft="75dp"
-        android:textAlignment="center"
-        android:paddingBottom="2dp"
-        android:textSize="18sp"
-         />
+        android:textAlignment="center" />
 
 
 

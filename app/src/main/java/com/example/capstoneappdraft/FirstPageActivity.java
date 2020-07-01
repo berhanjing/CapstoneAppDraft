@@ -185,32 +185,6 @@ public class FirstPageActivity extends AppCompatActivity {
                 });
     }
 
-    private void googleButtonUI() {
-
-        SignInButton googleButton = (SignInButton) findViewById(R.id.googleButton);
-        googleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        for (int i = 0; i < googleButton.getChildCount(); i++) {
-            View v = googleButton.getChildAt(i);
-
-            if (v instanceof TextView)
-            {
-                TextView tv = (TextView) v;
-                tv.setTypeface(null, Typeface.NORMAL);
-                tv.setText("My Text");
-                tv.setTextColor(Color.parseColor("#50555C"));
-                tv.setSingleLine(true);
-                tv.setPadding(15, 15, 15, 15);
-
-                return;
-            }
-        }
-    }
 }
 
 
