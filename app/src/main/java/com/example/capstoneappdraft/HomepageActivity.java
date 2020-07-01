@@ -38,7 +38,7 @@ public class HomepageActivity extends AppCompatActivity {
                     case R.id.navigation_home:
                         return true;
                     case R.id.navigation_scoreboard:
-                        startActivity(new Intent(HomepageActivity.this, ScoreboardActivity.class));
+                        startActivity(new Intent(HomepageActivity.this, LeaderBoardActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_profile:

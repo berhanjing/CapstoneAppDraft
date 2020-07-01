@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_scoreboard:
-                        startActivity(new Intent(ProfileActivity.this, ScoreboardActivity.class));
+                        startActivity(new Intent(ProfileActivity.this, LeaderBoardActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_profile:

@@ -23,7 +23,7 @@
             android:noHistory = "true"></activity>
         <activity android:name=".HomepageActivity"></activity>
         <activity android:name=".MaintenanceRecordsActivity"></activity>
-        <activity android:name=".ScoreboardActivity"></activity>
+        <activity android:name=".LeaderBoardActivity"></activity>
         <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".CreateMaintenanceRecordActivity"></activity>
         <activity android:name=".CalendarActivity"></activity>

@@ -69,7 +69,7 @@ public class MaintenanceRecordsActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_scoreboard:
-                        startActivity(new Intent(MaintenanceRecordsActivity.this, ScoreboardActivity.class));
+                        startActivity(new Intent(MaintenanceRecordsActivity.this, LeaderBoardActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_profile:
