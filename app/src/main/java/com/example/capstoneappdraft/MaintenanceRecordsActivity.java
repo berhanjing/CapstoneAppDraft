@@ -113,7 +113,7 @@ public class MaintenanceRecordsActivity extends AppCompatActivity {
         String userID = user.getUid();
 
         //get all documents in the "Maintenance Record" collection
-        mFirestore.collection("Users").document(userID).collection("Maintenance Records").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        mFirestore.collection("Users").document(userID).collection("Maintenance Records").orderBy("Time Stamp").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 

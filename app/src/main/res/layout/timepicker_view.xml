@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:background="#B5C5C4" />
+
+    <TextView
+        android:id="@+id/whyre_appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/amiko"
+        android:text="MAINTENANCE RECORDS"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
+        android:textScaleX="1.1"
+        android:textSize="20sp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back_button"
+        android:tint="#44484E"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="170dp"
+        app:srcCompat="@drawable/abc_vector_test" />
 
     <TimePicker android:id="@+id/timePicker1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
-        android:layout_marginLeft="60dp"/>
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="250dp"/>
 
     <Button
         android:id="@+id/time_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="480dp"
         android:background="@drawable/button_background"
         android:backgroundTint="#6BAFEE"
         android:fontFamily="@font/amiko"
@@ -22,6 +59,6 @@
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
-        android:layout_marginLeft="110dp"
+        android:layout_marginLeft="120dp"
         android:textSize="20sp" />
 </RelativeLayout>
