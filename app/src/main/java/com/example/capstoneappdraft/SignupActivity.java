@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
@@ -38,7 +39,14 @@ public class SignupActivity extends AppCompatActivity {
     Button signupButton;
     String emailText;
     String passwordText;
-    FirebaseFirestore db;
+    FirebaseFirestore mFirestore;
+
+    private static final String ID_KEY = "User ID";
+    private static final String NAME_KEY = "Name";
+    private static final String COUNTRY_KEY = "Country";
+    private static final String TIME_STAMP = "Time Stamp";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +62,7 @@ public class SignupActivity extends AppCompatActivity {
         // ...
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,36 +90,28 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
 
                     // set user info
-                    FirebaseUser user=mAuth.getCurrentUser();
-                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(firstName.getText().toString())
-                            .build();
-                    user.updateProfile(profileUpdates)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Log.d(TAG, "User profile updated.");
-                                    }
-                                }
-                            });
-
-                    //set country
-                    Map<String, Object> place = new HashMap<>();
-                    place.put("country",country.getText().toString());
-                    db.collection("users").document(user.getUid()).set(place)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "DocumentSnapshot successfully written!");
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.w(TAG, "Error writing document", e);
-                                }
-                            });
+//                    FirebaseUser user=mAuth.getCurrentUser();
+//                    //set user's info into Firestore
+//                    // get current user ID of user who just signed up
+//                    String userID = user.getUid();
+//                    Map < String, Object > newUser = new HashMap < > ();
+//                    newUser.put(ID_KEY, userID);
+//                    newUser.put(NAME_KEY, firstName);
+//                    newUser.put(COUNTRY_KEY, country);
+//                    newUser.put(TIME_STAMP, FieldValue.serverTimestamp());
+//
+//                    mFirestore.collection("Users").document(userID).collection("User Info").document().set(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Log.d(TAG, "DocumentSnapshot successfully written!");
+//                            }
+//                    })
+//                            .addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Log.e(TAG, "Error writing document", e);
+//                                }
+//                            });
 
                     Intent intent = new Intent(SignupActivity.this, HomepageActivity.class);
                     startActivity(intent);

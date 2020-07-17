@@ -1,6 +1,8 @@
 package com.example.capstoneappdraft;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,10 +19,24 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +49,11 @@ public class LoginActivity extends AppCompatActivity {
     String emailText;
     String passwordText;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
+    private static final String TAG = "LOGINACTIVITY";
+    private static final String ID_KEY = "User ID";
+    private static final String TIME_STAMP = "Time Stamp";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +63,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         emailInput = findViewById(R.id.email_input);
         passwdInput = findViewById(R.id.password_input);
+
+        mFirestore = FirebaseFirestore.getInstance();
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,14 +116,22 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-                    // if sign-in is successful
-                    // intent to home activity
+
                     FirebaseUser user = mAuth.getCurrentUser();
-                    //Log.i("FirstPage",user.getPhoneNumber());
-                    if(user.getDisplayName()!=null)
-                        Log.i("Login",user.getDisplayName());
-                    else
-                        Log.i("Login","cannot");
+                    String userID = user.getUid();
+
+                    mFirestore.collection("Users").document().set(ID_KEY).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                        }
+                    })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.e(TAG, "Error writing document", e);
+                            }
+                        });
                     Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                     startActivity(intent);
                 } else {
@@ -110,6 +141,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }
 

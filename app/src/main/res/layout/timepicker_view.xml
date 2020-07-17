@@ -28,15 +28,15 @@
         android:layout_marginTop="20dp"
         />
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/back_button"
-        android:tint="#44484E"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="170dp"
-        app:srcCompat="@drawable/abc_vector_test" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/backButton"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:background="@drawable/back_button"-->
+<!--        android:tint="#44484E"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:layout_marginTop="170dp"-->
+<!--        app:srcCompat="@drawable/abc_vector_test" />-->
 
     <TimePicker android:id="@+id/timePicker1"
         android:layout_width="wrap_content"

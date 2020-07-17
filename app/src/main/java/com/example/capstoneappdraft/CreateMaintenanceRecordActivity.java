@@ -42,12 +42,12 @@ public class CreateMaintenanceRecordActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     private static final String TAG = "MaintenanceRecord";
 
+
     private static final String TITLE_KEY = "Title";
     private static final String DATE_KEY = "Date";
     private static final String TIME_KEY = "Time";
     private static final String DESC_KEY = "Description";
     private static final String TIME_STAMP = "Time Stamp";
-
     int LAUNCH_CALENDAR_ACTIVITY = 1;
     int LAUNCH_TIMEPICKER_ACTIVITY = 2;
 

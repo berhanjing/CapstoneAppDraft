@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="#B5C5C4" />
+
+    <Button
+        android:id="@+id/score_board_button"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:cursorVisible="true"
+        android:fontFamily="@font/asap"
+        android:text="Scoreboard"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#6BAFEE"/>
+
+    <Button
+        android:id="@+id/leader_board_button"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button_default_leader_board"
+        android:cursorVisible="true"
+        android:fontFamily="@font/asap"
+        android:text="leaderBoard"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Scoreboard"
+        android:fontFamily="@font/raleway_medium"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:layout_marginTop="115dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Points"
+        android:fontFamily="@font/raleway_medium"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="20dp"
+        />
+    <TextView
+        android:id="@+id/ranking"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Current Ranking"
+        android:fontFamily="@font/raleway_medium"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:layout_marginTop="175dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/profile_pic"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="110dp"
+        />
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="190dp"
+        />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigator"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        app:itemIconSize="25dp"
+        app:menu="@menu/bottom_navigation_menu"
+        />
+</RelativeLayout>

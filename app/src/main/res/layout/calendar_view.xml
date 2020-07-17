@@ -30,15 +30,15 @@
             android:layout_marginTop="20dp"
             />
 
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/back_button"
-            android:tint="#44484E"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="110dp"
-            app:srcCompat="@drawable/abc_vector_test" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/backButton"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:background="@drawable/back_button"-->
+<!--            android:tint="#44484E"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:layout_marginTop="110dp"-->
+<!--            app:srcCompat="@drawable/abc_vector_test" />-->
 
         <TextView
             android:layout_width="match_parent"

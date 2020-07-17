@@ -25,13 +25,16 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.core.OrderBy;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,9 +45,10 @@ public class MaintenanceRecordsActivity extends AppCompatActivity {
     TextView titleRecord;
     TextView dateRecord;
     TextView timeRecord;
+    TextView description;
     String docID;
     private static final String TAG = "MaintenanceRecord";
-    LinearLayout oneRecord = findViewById(R.id.record_box);
+    LinearLayout oneRecord;
 
 
 
@@ -53,6 +57,7 @@ public class MaintenanceRecordsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.maintenancerecords);
+        oneRecord = findViewById(R.id.record_box);
 
 
         bottomNavigationView = findViewById(R.id.navigator);
@@ -83,15 +88,7 @@ public class MaintenanceRecordsActivity extends AppCompatActivity {
 
         ReadMaintenanceRecords();
 
-       oneRecord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//            Intent intent = new Intent(MaintenanceRecordsActivity.this, RecordDetailActivity.class);
-//            intent.putExtra("docID", docID);
-//            startActivity(intent);
 
-            }
-        });
 
         floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -104,46 +101,40 @@ public class MaintenanceRecordsActivity extends AppCompatActivity {
 
     }
 
-    private List<String> ReadMaintenanceRecords() {
-        final ArrayList<String> docIDs = new ArrayList<String>();
-
+    private void ReadMaintenanceRecords(){
         FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
         //gets current user ID
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
         String userID = user.getUid();
 
         //get all documents in the "Maintenance Record" collection
-        mFirestore.collection("Users").document(userID).collection("Maintenance Records").orderBy("Time Stamp").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
-
-                if (task.isSuccessful()) {
-                    for(final DocumentSnapshot doc: task.getResult()){
-                        View view = getLayoutInflater().inflate(R.layout.each_maintenancerecord, oneRecord,false);
-                        titleRecord = view.findViewById(R.id.title_field);
-                        dateRecord = view.findViewById(R.id.date_record);
-                        timeRecord = view.findViewById(R.id.time_field);
-                        titleRecord.setText(doc.get("Title").toString());
-                        dateRecord.setText(doc.get("Date").toString());
-                        timeRecord.setText(doc.get("Time").toString());
-                        docID = doc.getId();
-                        docIDs.add(docID);
-
-                        oneRecord.addView(view);
-                        //ImageButton getRecordDetail = findViewById(R.id.expand_record);
-
-                    }
-                }
-            }
-        })
-                .addOnFailureListener(new OnFailureListener() {
+        mFirestore.collection("Users").document(userID).collection("Maintenance Records").orderBy("Time Stamp", Query.Direction.DESCENDING).get().
+                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (DocumentSnapshot document: Objects.requireNonNull(task.getResult())){
+                                View view = getLayoutInflater().inflate(R.layout.each_maintenancerecord, oneRecord,false);
+                                titleRecord = view.findViewById(R.id.title_field);
+                                dateRecord = view.findViewById(R.id.date_record);
+                                timeRecord = view.findViewById(R.id.time_field);
+                                description = view.findViewById(R.id.description);
+                                titleRecord.setText(document.getString("Title"));
+                                dateRecord.setText(document.getString("Date"));
+                                timeRecord.setText(document.getString("Time"));
+                                description.setText("Description: " + document.getString("Description"));
+
+                                oneRecord.addView(view);
+                            }
+                        } else {
+                            Log.d(TAG, "error getting documents: ", task.getException());
+                        }
                     }
                 });
-        return docIDs;
     }
+
+
 }
 
 

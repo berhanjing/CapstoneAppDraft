@@ -39,14 +39,14 @@
             android:text="3:15 PM"
             android:textColor="#6B727D"
             android:textSize="25dp" />
-        <ImageButton
-            android:id="@+id/expand_record"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/next_arrow"
-            android:background="@color/fui_transparent"
-            android:layout_marginLeft="330dp"
-            android:layout_marginTop="50dp"/>
+<!--        <ImageButton-->
+<!--            android:id="@+id/expand_record"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:srcCompat="@drawable/next_arrow"-->
+<!--            android:background="@color/fui_transparent"-->
+<!--            android:layout_marginLeft="330dp"-->
+<!--            android:layout_marginTop="50dp"/>-->
 
         <TextView
             android:id="@+id/title_field"
@@ -60,13 +60,13 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/duedate_field"
-            android:layout_width="wrap_content"
+            android:id="@+id/description"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="112dp"
             android:fontFamily="@font/asap"
-            android:text="Due in 10 Days' Time"
+            android:text="Description"
             android:textColor="#999999"
             android:textSize="15dp"
             android:layout_marginBottom="10dp"/>
