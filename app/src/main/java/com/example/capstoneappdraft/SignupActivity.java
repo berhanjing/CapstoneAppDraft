@@ -39,6 +39,8 @@ public class SignupActivity extends AppCompatActivity {
     Button signupButton;
     String emailText;
     String passwordText;
+    String firstNameText;
+    String countryText;
     FirebaseFirestore mFirestore;
 
     private static final String ID_KEY = "User ID";
@@ -68,9 +70,11 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View view) {
                 emailText = email.getText().toString();
                 passwordText = password.getText().toString();
+                firstNameText = firstName.getText().toString();
+                countryText = country.getText().toString();
                 checkDataEntered();
                 if (checkDataEntered()) {
-                    createAccount(emailText, passwordText);
+                    createAccount(emailText, passwordText, firstNameText, countryText);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "You did not fill in form correctly!", Toast.LENGTH_LONG).show();
@@ -79,7 +83,7 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void createAccount(String email, String password) {
+    private void createAccount(String email, String password, final String firstNameText, final String countryText) {
         Log.d(TAG, "createAccount:" + email);
 
         // create new user or register new user
@@ -88,6 +92,31 @@ public class SignupActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
+
+                    // set user info
+                    FirebaseUser user=mAuth.getCurrentUser();
+                    //set user's info into Firestore
+                    // get current user ID of user who just signed up
+                    String userID = user.getUid();
+                    Map < String, Object > newUser = new HashMap < > ();
+                    newUser.put(ID_KEY, userID);
+                    newUser.put(NAME_KEY, firstNameText);
+                    newUser.put(COUNTRY_KEY, countryText);
+                    newUser.put(TIME_STAMP, FieldValue.serverTimestamp());
+
+                    mFirestore.collection("Users").document(userID).collection("User Info").document().set(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "DocumentSnapshot successfully written!");
+                            }
+                    })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e(TAG, "Error writing document", e);
+                                }
+                            });
+
                     // if the user created intent to login activity
                     Intent intent = new Intent(SignupActivity.this, HomepageActivity.class);
                     startActivity(intent);
@@ -98,36 +127,13 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-                    // set user info
-//                    FirebaseUser user=mAuth.getCurrentUser();
-//                    //set user's info into Firestore
-//                    // get current user ID of user who just signed up
-//                    String userID = user.getUid();
-//                    Map < String, Object > newUser = new HashMap < > ();
-//                    newUser.put(ID_KEY, userID);
-//                    newUser.put(NAME_KEY, firstName);
-//                    newUser.put(COUNTRY_KEY, country);
-//                    newUser.put(TIME_STAMP, FieldValue.serverTimestamp());
-//
-//                    mFirestore.collection("Users").document(userID).collection("User Info").document().set(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Log.d(TAG, "DocumentSnapshot successfully written!");
-//                            }
-//                    })
-//                            .addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    Log.e(TAG, "Error writing document", e);
-//                                }
-//                            });
 
     }
 
 
     boolean checkDataEntered() {
-        String passwordText = password.getText().toString();
-        String confirmPasswordText = confirmPassword.getText().toString();
+//        String passwordText = password.getText().toString();
+//        String confirmPasswordText = confirmPassword.getText().toString();
 
         if (isEmpty(firstName)) {
             Toast t = Toast.makeText(this, "You must enter first name to register!", Toast.LENGTH_SHORT);

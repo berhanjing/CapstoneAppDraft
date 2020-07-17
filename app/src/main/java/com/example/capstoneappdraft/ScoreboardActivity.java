@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,11 +26,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ScoreboardActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    private static final String TAG = "ScoreboardActivity";
+    TextView currentPoints;
+    TextView currentRanking;
+    TextView Name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
+        currentPoints = findViewById(R.id.points);
+        currentRanking = findViewById(R.id.ranking);
+        Name = findViewById(R.id.name);
 
         bottomNavigationView = findViewById(R.id.navigator);
         bottomNavigationView.setSelectedItemId(R.id.navigation_scoreboard);
@@ -58,6 +66,8 @@ public class ScoreboardActivity extends AppCompatActivity {
         });
 
         ReadScores();
+        getRanking();
+        getName();
     }
 
     private void ReadScores() {
@@ -66,41 +76,81 @@ public class ScoreboardActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         String userID = user.getUid();
+        mFirestore.collection("Users").document(userID).collection("Scores").orderBy("Score", Query.Direction.DESCENDING)
+                .limit(1).get().
+        addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    for (DocumentSnapshot document: Objects.requireNonNull(task.getResult())){
+                        currentPoints.setText("Current Points: " + Long.toString(document.getLong("Score")));
+                    }
+                } else {
+                    Log.d(TAG, "error getting documents: ", task.getException());
+                }
+            }
+        });
     }
+
+    private void getRanking(){
+        FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
+        //gets current user ID
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        final String userID = user.getUid();
+        mFirestore.collection("leaderboard").orderBy("Score", Query.Direction.DESCENDING)
+                .get().
+                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    int i = 1;
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (DocumentSnapshot document: Objects.requireNonNull(task.getResult())){
+                                if (document.getId() == userID){
+                                    if (String.valueOf(i).contains("1")) {
+                                        currentRanking.setText("Current Ranking: " + String.valueOf(i) + "st");
+                                    }
+                                    else if (String.valueOf(i).contains("2")) {
+                                        currentRanking.setText("Current Ranking: " + String.valueOf(i) + "nd");
+                                    }
+                                    else if (String.valueOf(i).contains("3")) {
+                                        currentRanking.setText("Current Ranking: " + String.valueOf(i) + "rd");
+                                    }
+                                    else{
+                                        currentRanking.setText("Current Ranking: " + String.valueOf(i) + "th");
+                                    }
+                                }
+                                i++;
+                            }
+                        } else {
+                            Log.d(TAG, "error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    private void getName(){
+        FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
+        //gets current user ID
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        String userID = user.getUid();
+        mFirestore.collection("Users").document(userID).collection("User Info").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (DocumentSnapshot document: Objects.requireNonNull(task.getResult())){
+                                Name.setText(document.getString("Name"));
+                            }
+                        } else {
+                            Log.d(TAG, "error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
 }
 
-//        //get all documents in the "Maintenance Record" collection
-//        mFirestore.collection("leaderboard").orderBy("score", Query.Direction.DESCENDING).get().
-//                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()){
-//                            for (DocumentSnapshot document: Objects.requireNonNull(task.getResult())){
-//                                Username = view.findViewById(R.id.user_name);
-//                                TotalPoints = view.findViewById(R.id.points);
-//                                NumberPlacing = view.findViewById(R.id.placing);
-//
-//                                NumberPlacing.setText(Integer.toString(i));
-//                                TotalPoints.setText(Long.toString(document.getLong("score")) + " Points");
-//                                Username.setText(document.getString("name"));
-//                                if (i == 1){
-//                                    HexagonColor.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFD15A")));
-//                                }
-//                                if (i == 2){
-//                                    HexagonColor.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#DCDFE9")));
-//                                }
-//                                else if (i == 3){
-//                                    HexagonColor.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#994343")));
-//                                }
-//
-//                                AllScores.addView(view);
-//                                i++;
-//
-//                            }
-//                        } else {
-//                            Log.d(TAG, "error getting documents: ", task.getException());
-//                        }
-//                    }
-//                });
-//    }
+
+
 

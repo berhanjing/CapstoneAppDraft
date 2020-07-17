@@ -24,13 +24,38 @@
         app:srcCompat="@drawable/layover"
         tools:layout_editor_absoluteX="-49dp"
         tools:layout_editor_absoluteY="16dp" />
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="260dp"
+        android:ems="10"
+        android:fontFamily="@font/raleway_medium"
+        android:text="Please enter your name and country:"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/google_name_field"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="330dp"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/raleway_medium"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
 
     <EditText
         android:id="@+id/google_country_field"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="400dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:fontFamily="@font/raleway_medium"
@@ -44,8 +69,8 @@
         android:id="@+id/country_button"
         android:layout_width="100dp"
         android:layout_height="120px"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="500dp"
         android:background="@drawable/button_background"
         android:backgroundTint="#6BAFEE"
         android:cursorVisible="true"

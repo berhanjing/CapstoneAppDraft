@@ -110,7 +110,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
 
         //get all documents in the "Maintenance Record" collection
-        mFirestore.collection("leaderboard").orderBy("score", Direction.DESCENDING).get().
+        mFirestore.collection("leaderboard").orderBy("Score", Direction.DESCENDING).get().
                 addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -123,8 +123,8 @@ public class LeaderBoardActivity extends AppCompatActivity {
                                 NumberPlacing = view.findViewById(R.id.placing);
 
                                 NumberPlacing.setText(Integer.toString(i));
-                                TotalPoints.setText(Long.toString(document.getLong("score")) + " Points");
-                                Username.setText(document.getString("name"));
+                                TotalPoints.setText(Long.toString(document.getLong("Score")) + " Points");
+                                Username.setText(document.getString("Name"));
                                 if (i == 1){
                                     HexagonColor.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFD15A")));
                                 }
