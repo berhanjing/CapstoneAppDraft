@@ -88,6 +88,15 @@ public class SignupActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
+                    // if the user created intent to login activity
+                    Intent intent = new Intent(SignupActivity.this, HomepageActivity.class);
+                    startActivity(intent);
+                } else {
+                    // Registration failed
+                    Toast.makeText(getApplicationContext(), "Registration failed!!" + " Please try again later", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
                     // set user info
 //                    FirebaseUser user=mAuth.getCurrentUser();
@@ -113,14 +122,6 @@ public class SignupActivity extends AppCompatActivity {
 //                                }
 //                            });
 
-                    Intent intent = new Intent(SignupActivity.this, HomepageActivity.class);
-                    startActivity(intent);
-                } else {
-                    // Registration failed
-                    Toast.makeText(getApplicationContext(), "Registration failed!!" + " Please try again later", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
 
 
