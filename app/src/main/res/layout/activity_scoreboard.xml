@@ -64,7 +64,7 @@
         />
     <TextView
         android:id="@+id/ranking"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="Current Ranking"
         android:fontFamily="@font/raleway_medium"

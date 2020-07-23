@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -14,11 +15,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
@@ -30,6 +35,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     TextView currentPoints;
     TextView currentRanking;
     TextView Name;
+    Button leaderboardButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,15 @@ public class ScoreboardActivity extends AppCompatActivity {
         currentPoints = findViewById(R.id.points);
         currentRanking = findViewById(R.id.ranking);
         Name = findViewById(R.id.name);
+        leaderboardButton = findViewById(R.id.leader_board_button);
+
+        leaderboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScoreboardActivity.this, LeaderBoardActivity.class);
+                startActivity(intent);
+            }
+        });
 
         bottomNavigationView = findViewById(R.id.navigator);
         bottomNavigationView.setSelectedItemId(R.id.navigation_scoreboard);
@@ -98,35 +113,38 @@ public class ScoreboardActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         final String userID = user.getUid();
-        mFirestore.collection("leaderboard").orderBy("Score", Query.Direction.DESCENDING)
-                .get().
+        DocumentReference docRef = mFirestore.collection("leaderboard").document(userID);
+        mFirestore.collection("leaderboard").orderBy("Score", Query.Direction.DESCENDING).get().
                 addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    int i = 1;
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
-                            for (DocumentSnapshot document: Objects.requireNonNull(task.getResult())){
-                                if (document.getId() == userID){
-                                    if (String.valueOf(i).contains("1")) {
-                                        currentRanking.setText("Current Ranking: " + String.valueOf(i) + "st");
-                                    }
-                                    else if (String.valueOf(i).contains("2")) {
-                                        currentRanking.setText("Current Ranking: " + String.valueOf(i) + "nd");
-                                    }
-                                    else if (String.valueOf(i).contains("3")) {
-                                        currentRanking.setText("Current Ranking: " + String.valueOf(i) + "rd");
-                                    }
-                                    else{
-                                        currentRanking.setText("Current Ranking: " + String.valueOf(i) + "th");
-                                    }
+                            List<String> list = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                list.add(document.getId());
+                            }
+                            if(list.contains(userID)){
+                                String rankingNumber = Integer.toString(list.indexOf(userID) + 1);
+                                if (rankingNumber.contains("1")){
+                                    currentRanking.setText("Current Ranking: " + rankingNumber + "st");
                                 }
-                                i++;
+                                else if (rankingNumber.contains("2")){
+                                    currentRanking.setText("Current Ranking: " + rankingNumber + "nd");
+                                }
+                                else if (rankingNumber.contains("3")){
+                                    currentRanking.setText("Current Ranking: " + rankingNumber + "rd");
+                                }
+                                else{
+                                    currentRanking.setText("Current Ranking: " + rankingNumber + "th");
+                                }
                             }
                         } else {
                             Log.d(TAG, "error getting documents: ", task.getException());
                         }
+
                     }
                 });
+
     }
 
     private void getName(){

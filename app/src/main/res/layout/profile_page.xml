@@ -5,14 +5,114 @@
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <View
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="#B5C5C4"
+        />
+
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="300dp"
+        android:id="@+id/headingtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/amiko"
+        android:text="PROFILE"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
+        android:textScaleX="1.1"
+        android:textSize="25sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/profile_pic"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="150dp"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="270dp"
+        />
+
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Country:"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="330dp"
+        />
+
+    <TextView
+        android:id="@+id/country_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Singapore"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="330dp"
+        />
+
+    <TextView
+        android:id="@+id/motorcycle"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Motorcycle Model:"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="370dp"
+        android:textAlignment="viewEnd"
+        />
+
+    <TextView
+        android:id="@+id/motorcycle_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Venom (Velocette)"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/raleway_medium"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="395dp"
+        />
+
+    <Button
+        android:id="@+id/rebates_button"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="100dp"
-        android:textSize="20dp"
-        android:text="Profile Page" />
+        android:layout_marginTop="600dp"
+        android:cursorVisible="true"
+        android:fontFamily="@font/asap"
+        android:text="View Premium Rebates"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#6BAFEE"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigator"
