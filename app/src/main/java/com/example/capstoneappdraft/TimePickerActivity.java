@@ -47,15 +47,28 @@ public class TimePickerActivity extends AppCompatActivity {
                 else{
                     am_pm="AM";
                 }
+                if (minute < 10) {
+                    String minuteString = "0" + Integer.toString(minute);
+                    String time = + hour +":"+ minuteString +" "+ am_pm;
+                    Log.d(TAG, "onSelectedDayChange: yyyy/mm/dd: " + time);
+                    Intent intent = new Intent();
+                    intent.putExtra("setTime", time);
+                    setResult(Activity.RESULT_OK,intent);
+                    finish();
+                }
+                else {
+                    String time = +hour + ":" + minute + " " + am_pm;
+                    Log.d(TAG, "onSelectedDayChange: yyyy/mm/dd: " + time);
+                    Intent intent = new Intent();
+                    intent.putExtra("setTime", time);
+                    setResult(Activity.RESULT_OK,intent);
+                    finish();
+                }
 
-                String time = + hour +":"+ minute +" "+ am_pm;
-                Log.d(TAG, "onSelectedDayChange: yyyy/mm/dd: " + time);
-                Intent intent = new Intent();
-                intent.putExtra("setTime", time);
-                setResult(Activity.RESULT_OK,intent);
-                finish();
             }
         });
 
     }
+
+
 }

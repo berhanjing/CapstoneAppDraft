@@ -283,7 +283,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Past Trips"
+            android:text="Past Trips This Month"
             android:textColor="#000000"
             android:textSize="20sp"
             android:fontFamily="@font/raleway_medium"
@@ -325,6 +325,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/popup_notif"
+        android:visibility="invisible"
         >
 
         <ImageView
@@ -338,7 +339,7 @@
         <ImageView
             android:layout_width="310dp"
             android:layout_height="350dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="170dp"
             android:backgroundTint="#FFFFFF"
             android:translationZ="20sp"
@@ -348,7 +349,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/alarm"
-            android:layout_marginLeft="150dp"
+            android:layout_marginLeft="170dp"
             android:layout_marginTop="220dp"
             android:translationZ="20sp"
             />
@@ -407,7 +408,8 @@
             android:layout_height="70dp"
             android:background="@drawable/ic_baseline_cancel_24"
             android:layout_marginTop="550dp"
-            android:layout_marginLeft="160dp"
+            android:layout_marginLeft="170dp"
+            android:id="@+id/popup_button"
             />
 
     </RelativeLayout>

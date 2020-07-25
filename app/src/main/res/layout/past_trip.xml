@@ -38,14 +38,14 @@
         android:textSize="18sp"
         android:fontFamily="@font/amiko"/>
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="340dp"
-        android:background="@drawable/next_arrow"
-        />
+<!--    <Button-->
+<!--        android:id="@+id/button4"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginLeft="340dp"-->
+<!--        android:background="@drawable/next_arrow"-->
+<!--        />-->
 
     <View
         android:layout_width="match_parent"

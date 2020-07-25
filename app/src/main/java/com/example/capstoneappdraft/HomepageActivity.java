@@ -2,9 +2,13 @@ package com.example.capstoneappdraft;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +23,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class HomepageActivity extends AppCompatActivity {
@@ -27,6 +36,8 @@ public class HomepageActivity extends AppCompatActivity {
     TextView titleOfAlert;
     String date;
     String time;
+    RelativeLayout PopupNotif;
+    ImageButton PopupButton;
 
 
     @Override
@@ -36,6 +47,9 @@ public class HomepageActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.navigator);
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        PopupNotif = findViewById(R.id.popup_notif);
+        PopupButton = findViewById(R.id.popup_button);
+
 
         LinearLayout onePastTrip = findViewById(R.id.pasttrip_content);
         View view = getLayoutInflater().inflate(R.layout.past_trip, onePastTrip,false);
@@ -65,6 +79,13 @@ public class HomepageActivity extends AppCompatActivity {
         });
 
         checkForMaintenanceNotif();
+        PopupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               PopupNotif.setVisibility(View.GONE);
+            }
+        });
+
 
     }
 
@@ -82,14 +103,16 @@ public class HomepageActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     for(final DocumentSnapshot doc: task.getResult()){
-                        //View view = getLayoutInflater().inflate(R.layout.each_maintenancerecord, oneRecord,false);
-                        titleOfAlert = findViewById(R.id.title_of_record);
-                        dateAndTime = findViewById(R.id.date_time);
-                       // titleRecord.setText(doc.get("Title").toString());
-                        date = doc.get("Date").toString();
-                        time = doc.get("Time").toString();
-                        dateAndTime.setText(date + ", " + time);
-                        //timeRecord.setText(doc.get("Time").toString());
+                        if (checkTodayDate().equals(doc.get("Date").toString())) {
+                            PopupNotif.setVisibility(View.VISIBLE);
+                            titleOfAlert = findViewById(R.id.title_of_record);
+                            dateAndTime = findViewById(R.id.date_time);
+                            date = doc.get("Date").toString();
+                            time = doc.get("Time").toString();
+                            String fullDate = getDateInFull(date);
+                            dateAndTime.setText(fullDate + ", " + time);
+                            titleOfAlert.setText(doc.get("Title").toString());
+                        }
 
                     }
                 }
@@ -102,8 +125,21 @@ public class HomepageActivity extends AppCompatActivity {
                 });
     }
 
-    public void checkMonth(){
+    public String getDateInFull(String date){
+        String[] splitdate = date.split("/");
+        String day = splitdate[0];
+        Integer month = Integer.valueOf(splitdate[1]);
+        String year = splitdate[2];
+        String monthString = new DateFormatSymbols().getMonths()[month - 1];
+        String FullDateName = day + " " + monthString + " " + year;
+        return FullDateName;
+    }
 
+    public String checkTodayDate(){
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+        return formattedDate;
     }
 
 }
