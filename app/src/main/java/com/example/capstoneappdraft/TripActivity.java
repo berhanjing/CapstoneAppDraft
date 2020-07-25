@@ -1,5 +1,6 @@
 package com.example.capstoneappdraft;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
@@ -9,6 +10,7 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
@@ -24,10 +26,14 @@ import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import me.bendik.simplerangeview.SimpleRangeView;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.opencv.android.CameraActivity;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.OpenCVLoader;
@@ -134,7 +140,9 @@ public class TripActivity extends CameraActivity implements SensorEventListener,
     private float[] rotat=new float[0];
     private String time;
 
-
+    //RangeBar
+    SimpleRangeView RangeBar;
+    TextView RangeBarNum;
     public TripActivity() {
     }
 
@@ -175,11 +183,46 @@ public class TripActivity extends CameraActivity implements SensorEventListener,
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
-        //place your code here
+        //RangeBar code here
+        RangeBar = findViewById(R.id.range_bar);
+        RangeBarNum = findViewById(R.id.range_num);
 
+        RangeBar.setOnChangeRangeListener(new SimpleRangeView.OnChangeRangeListener() {
+            @Override
+            public void onRangeChanged(@NotNull SimpleRangeView simpleRangeView, int i, int i1) {
+                RangeBarNum.setText(String.valueOf(i) + " - " + String.valueOf(i1));
+            }
+        });
 
+        RangeBar.setOnTrackRangeListener(new SimpleRangeView.OnTrackRangeListener() {
+            @Override
+            public void onStartRangeChanged(@NotNull SimpleRangeView simpleRangeView, int i) {
+                RangeBarNum.setText(String.valueOf(i));
+            }
 
+            @Override
+            public void onEndRangeChanged(@NotNull SimpleRangeView simpleRangeView, int i) {
+                RangeBarNum.setText(String.valueOf(i));
+            }
+        });
 
+        RangeBar.setOnRangeLabelsListener(new SimpleRangeView.OnRangeLabelsListener() {
+            @Nullable
+            @Override
+            public String getLabelTextForPosition(@NotNull SimpleRangeView simpleRangeView, int i, @NotNull SimpleRangeView.State state) {
+                return String.valueOf(i);
+            }
+        });
+
+        //Start Button code here
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               RangeBar.setVisibility(View.GONE);
+               RangeBarNum.setVisibility(View.GONE);
+
+            }
+        });
 
 
 
@@ -451,6 +494,7 @@ public class TripActivity extends CameraActivity implements SensorEventListener,
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onLocationChanged(Location location) {
         //Log.i("in Location changed",location.getLatitude()+"  "+location.getLongitude());
@@ -795,6 +839,7 @@ class MyGPS{
     private static float distanceBetween=0;
     private static float bearingStart=0;
     private static float bearingEnd=0;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     MyGPS(Location location){
         try{
             oldLong=carryLong;

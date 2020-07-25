@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_frame_layout"
     android:keepScreenOn="true"
     tools:context=".TripActivity">
@@ -12,6 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" />
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/range_num"
+        android:text="0 - 1"
+        android:textSize="40sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    
+    <me.bendik.simplerangeview.SimpleRangeView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/range_bar"
+        app:count="10"
+        app:movable="true"
+        android:layout_marginTop="700dp"
+        />
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
