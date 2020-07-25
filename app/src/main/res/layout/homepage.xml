@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -308,6 +310,7 @@
     </LinearLayout>
     </ScrollView>
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigator"
         android:layout_width="match_parent"
@@ -317,4 +320,95 @@
         app:itemIconSize="25dp"
         app:menu="@menu/bottom_navigation_menu"
         />
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/popup_notif"
+        >
+
+        <ImageView
+        android:id="@+id/popup_notif_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/layover" />
+
+        <ImageView
+            android:layout_width="310dp"
+            android:layout_height="350dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="170dp"
+            android:backgroundTint="#FFFFFF"
+            android:translationZ="20sp"
+            android:background="@drawable/field_box"/>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/alarm"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="220dp"
+            android:translationZ="20sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="320dp"
+            android:translationZ="20sp"
+            android:text="MAINTENANCE CHECK"
+            android:fontFamily="@font/amiko"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            />
+        <TextView
+            android:id="@+id/date_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date and Time"
+            android:fontFamily="@font/raleway_medium"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginTop="360dp"
+            android:translationZ="20sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TODAY!"
+            android:fontFamily="@font/raleway_medium"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginTop="400dp"
+            android:translationZ="20sp"
+            />
+        <TextView
+            android:id="@+id/title_of_record"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:text="Title of Record"
+            android:fontFamily="@font/raleway_medium"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginTop="430dp"
+            android:layout_marginLeft="40dp"
+            android:translationZ="20sp"
+            />
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/ic_baseline_cancel_24"
+            android:layout_marginTop="550dp"
+            android:layout_marginLeft="160dp"
+            />
+
+    </RelativeLayout>
 </RelativeLayout>

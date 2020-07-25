@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.CalendarView;
 
+import java.util.Calendar;
 
 
 public class CalendarActivity extends AppCompatActivity {
@@ -24,7 +25,12 @@ public class CalendarActivity extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView CalendarView, int year, int month, int dayOfMonth) {
+                //set notification reminder for that day
+//                Calendar c = Calendar.getInstance();
+//                c.set(year, month, dayOfMonth);
+
                 String date = dayOfMonth + "/" + month + "/"+ year ;
+                //set date in maintenance record
                 Log.d(TAG, "onSelectedDayChange: yyyy/mm/dd:" + date);
                 Intent intent = new Intent();
                 intent.putExtra("dateFromCalendar", date);
