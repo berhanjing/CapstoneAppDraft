@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -38,6 +39,7 @@ public class HomepageActivity extends AppCompatActivity {
     String time;
     RelativeLayout PopupNotif;
     ImageButton PopupButton;
+    Button StartTripButton;
 
 
     @Override
@@ -49,6 +51,7 @@ public class HomepageActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
         PopupNotif = findViewById(R.id.popup_notif);
         PopupButton = findViewById(R.id.popup_button);
+        StartTripButton = findViewById(R.id.start_trip_button);
 
 
         LinearLayout onePastTrip = findViewById(R.id.pasttrip_content);
@@ -83,6 +86,14 @@ public class HomepageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                PopupNotif.setVisibility(View.GONE);
+            }
+        });
+
+        StartTripButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomepageActivity.this, RangeBarActivity.class);
+                startActivity(intent);
             }
         });
 

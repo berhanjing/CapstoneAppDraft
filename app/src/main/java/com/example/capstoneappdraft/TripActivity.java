@@ -21,6 +21,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,10 +31,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import me.bendik.simplerangeview.SimpleRangeView;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.opencv.android.CameraActivity;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.OpenCVLoader;
@@ -141,8 +139,8 @@ public class TripActivity extends CameraActivity implements SensorEventListener,
     private String time;
 
     //RangeBar
-    SimpleRangeView RangeBar;
-    TextView RangeBarNum;
+    SeekBar SeekBar;
+    TextView SeekBarNum;
     public TripActivity() {
     }
 
@@ -181,45 +179,20 @@ public class TripActivity extends CameraActivity implements SensorEventListener,
     protected void startSequence() {
         Log.v("startSequence",""+o++);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_trip);
         button = findViewById(R.id.button);
-        //RangeBar code here
-        RangeBar = findViewById(R.id.range_bar);
-        RangeBarNum = findViewById(R.id.range_num);
+        //SeekBar code here
+        SeekBar = findViewById(R.id.seekbar);
+        SeekBarNum = findViewById(R.id.num);
 
-        RangeBar.setOnChangeRangeListener(new SimpleRangeView.OnChangeRangeListener() {
-            @Override
-            public void onRangeChanged(@NotNull SimpleRangeView simpleRangeView, int i, int i1) {
-                RangeBarNum.setText(String.valueOf(i) + " - " + String.valueOf(i1));
-            }
-        });
-
-        RangeBar.setOnTrackRangeListener(new SimpleRangeView.OnTrackRangeListener() {
-            @Override
-            public void onStartRangeChanged(@NotNull SimpleRangeView simpleRangeView, int i) {
-                RangeBarNum.setText(String.valueOf(i));
-            }
-
-            @Override
-            public void onEndRangeChanged(@NotNull SimpleRangeView simpleRangeView, int i) {
-                RangeBarNum.setText(String.valueOf(i));
-            }
-        });
-
-        RangeBar.setOnRangeLabelsListener(new SimpleRangeView.OnRangeLabelsListener() {
-            @Nullable
-            @Override
-            public String getLabelTextForPosition(@NotNull SimpleRangeView simpleRangeView, int i, @NotNull SimpleRangeView.State state) {
-                return String.valueOf(i);
-            }
-        });
 
         //Start Button code here
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               RangeBar.setVisibility(View.GONE);
-               RangeBarNum.setVisibility(View.GONE);
+               SeekBar.setVisibility(View.GONE);
+               SeekBarNum.setVisibility(View.GONE);
 
             }
         });
@@ -250,8 +223,9 @@ public class TripActivity extends CameraActivity implements SensorEventListener,
         WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         mDisplay = wm.getDefaultDisplay();
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        //uncomment this after
+//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 
         int headerIterator=1;
         //String disData="";

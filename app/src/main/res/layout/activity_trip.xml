@@ -13,33 +13,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" />
-    
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/range_num"
-        android:text="0 - 1"
-        android:textSize="40sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:layout_marginTop="650dp"
-        android:layout_marginLeft="10dp"
-        />
 
-    
-    <me.bendik.simplerangeview.SimpleRangeView
-        android:layout_width="match_parent"
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        android:rotation="270"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="-200dp"/>
+
+    <TextView
+        android:id="@+id/num"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/range_bar"
-        app:count="10"
-        app:movable="true"
-        android:layout_marginTop="700dp"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textSize="16sp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="50dp"
+        android:textColor="#FFFFFF"/>
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
         android:text="Start"
-        tools:layout_editor_absoluteX="145dp" />
+        tools:layout_editor_absoluteX="145dp"
+        />
 </FrameLayout>

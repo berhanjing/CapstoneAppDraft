@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +31,8 @@ public class ProfileActivity extends AppCompatActivity {
     TextView Name;
     TextView Country;
     TextView MotorcycleModel;
+    ImageView editProfile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         Name = findViewById(R.id.name);
         Country = findViewById(R.id.country_field);
         MotorcycleModel = findViewById(R.id.motorcycle_field);
+        editProfile = findViewById(R.id.edit_profile);
 
         RebatesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +74,14 @@ public class ProfileActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+                startActivity(intent);
             }
         });
 

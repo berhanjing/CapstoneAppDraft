@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <View
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:background="#B5C5C4"
+        />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back_button"
+        android:tint="#44484E"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="35dp"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/done_tick"
+        android:background="@color/fui_transparent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="320dp"
         />
 
     <TextView
@@ -19,7 +36,7 @@
         android:background="@android:color/transparent"
         android:ems="10"
         android:fontFamily="@font/amiko"
-        android:text="PROFILE"
+        android:text="EDIT PROFILE"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -30,23 +47,6 @@
         android:layout_marginLeft="30dp"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="140dp"
-        android:fontFamily="@font/raleway_medium"
-        android:text="edit profile"
-        android:textColor="#6D7A79" />
-
-    <ImageView
-        android:id="@+id/edit_profile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="330dp"
-        android:layout_marginTop="100dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/edit_profile" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="100dp"
@@ -57,25 +57,27 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="140dp"
         android:layout_marginTop="160dp">
-    <ImageView
-        android:layout_height="100dp"
-        android:layout_width="match_parent"
-        android:id="@+id/profile_pic"
-        android:src="@drawable/profile_pic"
-        android:scaleType="centerCrop"/>
+        <ImageView
+            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:id="@+id/profile_pic"
+            android:src="@drawable/profile_pic"
+            android:scaleType="centerCrop"/>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/name"
+    <Button
+        android:id="@+id/edit_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="260dp"
+        android:background="@color/fui_transparent"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="Edit Photo"
+        android:textAllCaps="false"
+        android:textColor="#6BAFEE"
         android:textSize="20sp"
-        android:textColor="#000000"
-        android:fontFamily="@font/raleway_medium"
-        android:layout_marginLeft="165dp"
-        android:layout_marginTop="270dp"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/country"
@@ -89,17 +91,22 @@
         android:layout_marginTop="330dp"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/country_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Singapore"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:fontFamily="@font/raleway_medium"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="330dp"
-        />
+        android:layout_marginTop="320dp"
+        android:background="@drawable/field_box"
+        android:ems="10"
+        android:fontFamily="@font/raleway_medium"
+        android:hint="Country Name"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="#000000"
+        android:textColorHint="#A5A5A5"
+        android:textSize="18sp"
+        android:paddingLeft="20sp"/>
 
     <TextView
         android:id="@+id/motorcycle"
@@ -114,32 +121,22 @@
         android:textAlignment="viewEnd"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/motorcycle_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Venom (Velocette)"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:fontFamily="@font/raleway_medium"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="395dp"
-        />
-
-    <Button
-        android:id="@+id/rebates_button"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="600dp"
-        android:cursorVisible="true"
-        android:fontFamily="@font/asap"
-        android:text="View Premium Rebates"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:background="@drawable/button_background"
-        android:backgroundTint="#6BAFEE"/>
+        android:layout_marginTop="380dp"
+        android:background="@drawable/field_box"
+        android:ems="10"
+        android:fontFamily="@font/raleway_medium"
+        android:hint="Model"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="#000000"
+        android:textColorHint="#A5A5A5"
+        android:textSize="18sp"
+        android:paddingLeft="20sp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigator"
