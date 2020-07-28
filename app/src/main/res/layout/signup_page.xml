@@ -45,8 +45,8 @@
         android:id="@+id/signup_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="150dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/amiko"
         android:text="SIGN UP"
@@ -70,7 +70,7 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="220dp" />
+        android:layout_marginTop="300dp" />
 
     <EditText
         android:id="@+id/email_field"
@@ -85,7 +85,7 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="280dp" />
+        android:layout_marginTop="360dp" />
 
     <EditText
         android:id="@+id/country_field"
@@ -100,7 +100,7 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="340dp" />
+        android:layout_marginTop="420dp" />
 
     <EditText
         android:id="@+id/passwd_field"
@@ -115,7 +115,7 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="400dp" />
+        android:layout_marginTop="480dp" />
 
     <EditText
         android:id="@+id/confirmpwd_field"
@@ -130,7 +130,39 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="460dp" />
+        android:layout_marginTop="540dp" />
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:elevation="12dp"-->
+<!--        android:id="@+id/view2"-->
+<!--        app:cardCornerRadius="40dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginLeft="140dp"-->
+<!--        android:layout_marginTop="180dp">-->
+<!--        <ImageView-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:id="@+id/profile_pic"-->
+<!--            android:src="@drawable/profile_pic"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            />-->
+<!--    </androidx.cardview.widget.CardView>-->
+
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:background="@color/fui_transparent"-->
+<!--        android:layout_marginLeft="140dp"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:layout_marginTop="260dp"-->
+<!--        android:fontFamily="@font/raleway_bold"-->
+<!--        android:text="Add Profile Pic"-->
+<!--        android:textColor="#6BAFEE"-->
+<!--        android:textSize="20sp"-->
+<!--        android:id="@+id/add_profile_pic"/>-->
 
     <Button
         android:id="@+id/signup_button"
@@ -146,7 +178,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:layout_marginLeft="145dp"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="600dp"
         />
 
 

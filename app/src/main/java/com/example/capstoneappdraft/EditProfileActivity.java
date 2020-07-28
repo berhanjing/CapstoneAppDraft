@@ -13,20 +13,38 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import io.grpc.Compressor;
 
 public class EditProfileActivity extends AppCompatActivity {
     ImageView profilePic;
     Button editPhotoButton;
+    ImageButton DoneButton;
+    Uri filePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +52,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.edit_profile);
         profilePic = findViewById(R.id.profile_pic);
         editPhotoButton = findViewById(R.id.edit_photo);
+        DoneButton = findViewById(R.id.button_done);
 
         editPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,12 +61,24 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+        DoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditProfileActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user.getPhotoUrl() != null){
+            GlideApp.with(EditProfileActivity.this).load(user.getPhotoUrl()).into(profilePic);
+            //Glide.with(this).load(user.getPhotoUrl()).into(profilePic);
+        }
 
     }
 
     private void selectImage() {
+
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
         AlertDialog.Builder builder = new AlertDialog.Builder(EditProfileActivity.this);
         builder.setTitle("Add Photo!");
@@ -80,6 +111,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
                         profilePic.setImageBitmap(selectedImage);
+                        UploadProfilePic(selectedImage);
                     }
 
                     break;
@@ -104,5 +136,56 @@ public class EditProfileActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    private void UploadProfilePic(Bitmap bitmap){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userID = user.getUid();
+
+        ByteArrayOutputStream BAOS = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, BAOS);
+        final StorageReference reference = FirebaseStorage.getInstance().getReference().child("ProfileImages").child(userID + ".jpeg");
+
+        reference.putBytes(BAOS.toByteArray()).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                getDownloadUrl(reference);
+            }
+        })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e("TAG", "onFailure: " + e.getCause());
+                }
+            });
+
+    }
+
+    private void getDownloadUrl(StorageReference reference){
+        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Log.d("TAG", "OnSuccess: " + uri);
+                SetUserProfileUrl(uri);
+            }
+        });
+    }
+
+    private void SetUserProfileUrl(Uri uri){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setPhotoUri(uri).build();
+
+        user.updateProfile(request).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(EditProfileActivity.this, "Updated successfully!", Toast.LENGTH_SHORT);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(EditProfileActivity.this, "Profile Image Failed.", Toast.LENGTH_SHORT);
+            }
+        });
     }
 }

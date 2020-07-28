@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/amiko</item>
         <item>@font/asap</item>
+        <item>@font/raleway_bold</item>
         <item>@font/raleway_medium</item>
         <item>@font/raleway_semibold</item>
     </array>

@@ -73,25 +73,39 @@
         android:layout_marginTop="175dp"
         android:layout_marginLeft="20dp"
         />
-
-    <ImageView
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="110dp">
+    <androidx.cardview.widget.CardView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/profile_pic"
-        android:layout_marginLeft="280dp"
-        android:layout_marginTop="110dp"
-        />
+        android:elevation="12dp"
+        android:id="@+id/view2"
+        app:cardCornerRadius="40dp"
+        android:layout_marginLeft="10dp"
+        >
+        <ImageView
+            android:layout_height="80dp"
+            android:layout_width="match_parent"
+            android:id="@+id/profile_pic"
+            android:src="@drawable/profile_pic"
+            android:scaleType="centerCrop"
+            />
+    </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:textColor="#000000"
         android:fontFamily="@font/raleway_medium"
-        android:layout_marginLeft="290dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="90dp"
         />
+    </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigator"

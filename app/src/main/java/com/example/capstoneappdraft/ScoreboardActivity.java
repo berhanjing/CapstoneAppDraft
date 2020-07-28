@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,6 +38,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     TextView currentRanking;
     TextView Name;
     Button leaderboardButton;
+    ImageView profilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         currentRanking = findViewById(R.id.ranking);
         Name = findViewById(R.id.name);
         leaderboardButton = findViewById(R.id.leader_board_button);
+        profilePic = findViewById(R.id.profile_pic);
 
         leaderboardButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +83,11 @@ public class ScoreboardActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user.getPhotoUrl() != null){
+            Glide.with(this).load(user.getPhotoUrl()).into(profilePic);
+        }
 
         ReadScores();
         getRanking();

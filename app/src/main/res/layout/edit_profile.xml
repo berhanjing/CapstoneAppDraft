@@ -27,6 +27,7 @@
         android:background="@color/fui_transparent"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="320dp"
+        android:id="@+id/button_done"
         />
 
     <TextView
@@ -62,7 +63,8 @@
             android:layout_width="match_parent"
             android:id="@+id/profile_pic"
             android:src="@drawable/profile_pic"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            />
     </androidx.cardview.widget.CardView>
 
     <Button
@@ -72,6 +74,7 @@
         android:layout_marginLeft="145dp"
         android:layout_marginTop="260dp"
         android:background="@color/fui_transparent"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/raleway_semibold"
         android:text="Edit Photo"
         android:textAllCaps="false"
@@ -87,7 +90,7 @@
         android:textSize="20sp"
         android:textColor="#000000"
         android:fontFamily="@font/raleway_medium"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="70dp"
         android:layout_marginTop="330dp"
         />
 
