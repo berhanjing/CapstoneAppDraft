@@ -138,7 +138,7 @@ public class TripActivity extends CameraActivity implements SensorEventListener,
     private float[] rotat=new float[0];
     private String time;
 
-    //RangeBar
+    //SeekBar
     SeekBar SeekBar;
     TextView SeekBarNum;
     public TripActivity() {
@@ -965,4 +965,5 @@ class MyGPS{
     public static void setLongitude(double longitude) {
         MyGPS.longitude = longitude;
     }
+
 }

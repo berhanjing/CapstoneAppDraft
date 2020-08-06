@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <View
         android:id="@+id/heading"
@@ -56,7 +58,8 @@
         app:cardCornerRadius="80dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="140dp"
-        android:layout_marginTop="160dp">
+        android:layout_marginTop="160dp"
+        android:translationZ="15dp">
     <ImageView
         android:layout_height="100dp"
         android:layout_width="match_parent"
@@ -77,17 +80,49 @@
         android:layout_marginLeft="165dp"
         android:layout_marginTop="270dp"
         />
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Current Score: "
+        android:fontFamily="@font/raleway_medium"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:layout_marginTop="310dp"
+        android:layout_marginLeft="45dp"
+        />
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:fontFamily="@font/raleway_medium"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:layout_marginTop="310dp"
+        android:layout_marginLeft="200dp"
+        />
+    <TextView
+        android:id="@+id/ranking"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Current Ranking"
+        android:fontFamily="@font/raleway_medium"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:layout_marginTop="360dp"
+        android:layout_marginLeft="45dp"
+        />
 
     <TextView
         android:id="@+id/country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Country:"
+        android:text="Country: "
         android:textSize="20sp"
         android:textColor="#000000"
         android:fontFamily="@font/raleway_medium"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="410dp"
         />
 
     <TextView
@@ -98,33 +133,33 @@
         android:textSize="20sp"
         android:textColor="#000000"
         android:fontFamily="@font/raleway_medium"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="410dp"
         />
 
     <TextView
         android:id="@+id/motorcycle"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Motorcycle Model:"
         android:textSize="20sp"
         android:textColor="#000000"
         android:fontFamily="@font/raleway_medium"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="460dp"
         android:textAlignment="viewEnd"
         />
 
     <TextView
         android:id="@+id/motorcycle_field"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Venom (Velocette)"
         android:textSize="20sp"
         android:textColor="#000000"
         android:fontFamily="@font/raleway_medium"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="395dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="460dp"
         />
 
     <Button
@@ -132,7 +167,7 @@
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="570dp"
         android:cursorVisible="true"
         android:fontFamily="@font/asap"
         android:text="View Premium Rebates"
@@ -141,6 +176,39 @@
         android:textSize="15sp"
         android:background="@drawable/button_background"
         android:backgroundTint="#6BAFEE"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Rebates This Month:"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/raleway_bold"
+        android:layout_marginLeft="45dp"
+        android:textStyle="bold"
+        android:layout_marginTop="530dp"
+       />
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:background="@drawable/borderbox"
+        android:layout_marginTop="520dp"
+        android:layout_marginLeft="320dp">
+
+    <TextView
+        android:id="@+id/rebate_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:fontFamily="@font/raleway_bold"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    </RelativeLayout>
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigator"

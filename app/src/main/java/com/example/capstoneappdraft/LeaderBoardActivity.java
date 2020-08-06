@@ -66,7 +66,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     TextView NumberPlacing;
     ImageView HexagonColor;
     int i = 1;
-    Button ScoreboardButton;
+    //Button ScoreboardButton;
     ImageView profilePic;
 
 
@@ -76,7 +76,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
         AllScores = findViewById(R.id.leaderboard_scores);
-        ScoreboardButton = findViewById(R.id.score_board_button);
+       // ScoreboardButton = findViewById(R.id.score_board_button);
 
         bottomNavigationView = findViewById(R.id.navigator);
         bottomNavigationView.setSelectedItemId(R.id.navigation_scoreboard);
@@ -106,12 +106,12 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
         ReadLeaderboardScores();
 
-        ScoreboardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LeaderBoardActivity.this, ScoreboardActivity.class));
-            }
-        });
+//        ScoreboardButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(LeaderBoardActivity.this, ScoreboardActivity.class));
+//            }
+//        });
 
 
 

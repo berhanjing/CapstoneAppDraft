@@ -21,38 +21,56 @@ android:layout_height="fill_parent">
             android:layout_height="95dp"
             android:background="#B5C5C4" />
 
-        <Button
-            android:id="@+id/score_board_button"
-            android:layout_width="180dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/button_default_leader_board"
-            android:cursorVisible="true"
-            android:fontFamily="@font/asap"
-            android:text="Scoreboard"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+<!--        <Button-->
+<!--            android:id="@+id/score_board_button"-->
+<!--            android:layout_width="180dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:background="@drawable/button_default_leader_board"-->
+<!--            android:cursorVisible="true"-->
+<!--            android:fontFamily="@font/asap"-->
+<!--            android:text="Scoreboard"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold" />-->
 
-        <Button
-            android:id="@+id/leader_board_button"
-            android:layout_width="180dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="210dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/button_background"
-            android:cursorVisible="true"
-            android:fontFamily="@font/asap"
-            android:text="leaderBoard"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:backgroundTint="#6BAFEE"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+<!--        <Button-->
+<!--            android:id="@+id/leader_board_button"-->
+<!--            android:layout_width="180dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginLeft="210dp"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:background="@drawable/button_background"-->
+<!--            android:cursorVisible="true"-->
+<!--            android:fontFamily="@font/asap"-->
+<!--            android:text="leaderBoard"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="#000000"-->
+<!--            android:backgroundTint="#6BAFEE"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold" />-->
+            <TextView
+                android:id="@+id/headingtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:fontFamily="@font/amiko"
+                android:text="LEADERBOARD"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#000000"
+                android:textScaleX="1.1"
+                android:textSize="25sp"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="30dp"
+                />
 
-        <TextView
+
+            <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Leaders"

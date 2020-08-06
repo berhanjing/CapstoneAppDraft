@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -41,6 +43,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import io.grpc.Compressor;
 
 public class EditProfileActivity extends AppCompatActivity {
+    BottomNavigationView bottomNavigationView;
     ImageView profilePic;
     Button editPhotoButton;
     ImageButton DoneButton;
@@ -50,6 +53,8 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_profile);
+        bottomNavigationView = findViewById(R.id.navigator);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
         profilePic = findViewById(R.id.profile_pic);
         editPhotoButton = findViewById(R.id.edit_photo);
         DoneButton = findViewById(R.id.button_done);
@@ -58,6 +63,29 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectImage();
+            }
+        });
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch(menuItem.getItemId()){
+                    case R.id.navigation_home:
+                        startActivity(new Intent(EditProfileActivity.this, HomepageActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_maintenance:
+                        startActivity(new Intent(EditProfileActivity.this, MaintenanceRecordsActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_scoreboard:
+                        startActivity(new Intent(EditProfileActivity.this, LeaderBoardActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_profile:
+                        return true;
+                }
+                return false;
             }
         });
 

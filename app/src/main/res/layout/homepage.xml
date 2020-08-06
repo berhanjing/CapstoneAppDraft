@@ -69,33 +69,73 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="330dp"
+            android:layout_height="300dp"
             android:padding="5dp"
             android:layout_marginTop="10dp"
             android:background="#F4F6FB"
             android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
 
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:background="#DCDFE9"
+                android:layout_marginLeft="90dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lasttrip_score"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:background="#DCDFE9"
+                    android:layout_marginLeft="52dp"
+                    android:text=""
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="50sp"
+                    android:fontFamily="@font/raleway_medium"
+                    />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="Trip Score"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/raleway_medium"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
 
             <LinearLayout
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="#DCDFE9"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/harsh_brakings_num"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:background="#DCDFE9"
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="10dp"
-                    android:text="5"
+                    android:text=""
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="25sp"
@@ -103,14 +143,14 @@
                     />
 
                 <TextView
-                android:layout_width="90dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
-                android:text="No. of Lane Swerves"
+                android:text="No. of Harsh Brakings"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/raleway_medium"
                 />
             </LinearLayout>
@@ -120,7 +160,6 @@
                 android:layout_height="100dp"
                 android:background="#DCDFE9"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -129,11 +168,12 @@
                     android:background="#DCDFE9"
                     android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/max_speed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="75"
+                    android:text=""
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="25sp"
@@ -153,10 +193,11 @@
                 </LinearLayout>
 
                 <TextView
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Average Speed"
+                android:text="Max Speed"
                 android:textAlignment="center"
+                android:layout_gravity="center"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:layout_marginTop="10dp"
@@ -170,7 +211,6 @@
                 android:layout_height="100dp"
                 android:background="#DCDFE9"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -178,14 +218,15 @@
                     android:background="#DCDFE9"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/total_dist"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="10"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="#000000"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:fontFamily="@font/raleway_medium"
                         />
                     <TextView
@@ -193,7 +234,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="15dp"
-                    android:text="km/h"
+                    android:text="km"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="15dp"
@@ -212,78 +253,13 @@
                     android:fontFamily="@font/raleway_medium"
                     />
             </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="#DCDFE9"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="()"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/raleway_medium"
-                    />
-                <TextView
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginLeft="3dp"
-                    android:text="Harsh Braking Freq."
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/raleway_medium"
-                    />
-
-            </LinearLayout>
-                <TextView
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="80dp"
-                    android:text=". . ."
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="30sp"
-                    android:fontFamily="@font/raleway_medium"
-                    />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/detailed_report"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/button_background"
-                android:backgroundTint="#6BAFEE"
-                android:cursorVisible="true"
-                android:fontFamily="@font/raleway_medium"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="DETAILED REPORT"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:textStyle="bold" />
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Past Trips This Month"
+            android:text="Past Trips Scores This Month"
             android:textColor="#000000"
             android:textSize="20sp"
             android:fontFamily="@font/raleway_medium"
@@ -398,6 +374,7 @@
             android:textSize="20sp"
             android:textColor="#000000"
             android:gravity="center"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="430dp"
             android:layout_marginLeft="40dp"
             android:translationZ="20sp"
